@@ -1,1 +1,0 @@
-SELECT stock_id,symbol from stocks
