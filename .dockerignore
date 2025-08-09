@@ -16,3 +16,4 @@ __pycache__/
 !logs
 hello-cronjob.yaml
 PASSWD.LOG
+.venv/

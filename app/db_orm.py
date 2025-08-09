@@ -1,7 +1,8 @@
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, aliased
-from sqlalchemy import Integer, String, Float, ForeignKey, Date, BigInteger
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import String,  ForeignKey, Date
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.mutable import MutableDict
+
 from datetime import date
 class Base(DeclarativeBase):
     pass
@@ -24,7 +25,7 @@ class QuarterlyBalanceSheet(Base):
     publish_date: Mapped[date] = mapped_column(primary_key=True)
     data: Mapped[dict] = mapped_column(MutableDict.as_mutable(JSONB), nullable=False)
 
-    # stock: Mapped[Stock] = relationship("Stock", back_populates="balances_quarterly")
+    
 
     def __repr__(self):
         return f"<QuarterlyBalanceSheet(stock_id={self.stock_id}, publish_date={self.publish_date})>"
@@ -36,7 +37,7 @@ class QuarterlyIncomeStatement(Base):
     publish_date: Mapped[date] = mapped_column(primary_key=True)
     data: Mapped[dict] = mapped_column(MutableDict.as_mutable(JSONB), nullable=False)
 
-    # stock: Mapped[Stock] = relationship("Stock", back_populates="income_quarterly")
+    
 
     def __repr__(self):
         return f"<QuarterlyIncomeStatement(stock_id={self.stock_id}, publish_date={self.publish_date})>"
@@ -48,7 +49,7 @@ class QuarterlyCashFlow(Base):
     publish_date: Mapped[date] = mapped_column(primary_key=True)
     data: Mapped[dict] = mapped_column(MutableDict.as_mutable(JSONB), nullable=False)
 
-    # stock: Mapped[Stock] = relationship("Stock", back_populates="cash_quarterly")
+
 
     def __repr__(self):
         return f"<QuarterlyCashFlow(stock_id={self.stock_id}, publish_date={self.publish_date})>"
@@ -58,7 +59,7 @@ class StockView(Base):
 
     stock_id: Mapped[int] = mapped_column(primary_key=True)
     symbol: Mapped[str] = mapped_column(String)
-    last_spot_date: Mapped[Date] = mapped_column(Date)
+    last_update: Mapped[Date] = mapped_column(Date)
    
 
     def __repr__(self):

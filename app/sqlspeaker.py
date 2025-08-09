@@ -1,6 +1,6 @@
 import os
 
-from sqlalchemy import select,Connection, create_engine,update
+from sqlalchemy import select, create_engine
 from .db_orm import (Stock,
                         
                         QuarterlyBalanceSheet, QuarterlyIncomeStatement, QuarterlyCashFlow, StockView)
