@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # הגדרת נקודת הכניסה להרצת הקובץ הראשי
-ENTRYPOINT ["python3", "app.py"]
+ENTRYPOINT ["python3", "index.py"]

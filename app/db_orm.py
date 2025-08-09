@@ -2,7 +2,6 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import String,  ForeignKey, Date
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.mutable import MutableDict
-
 from datetime import date
 class Base(DeclarativeBase):
     pass
@@ -60,6 +59,7 @@ class StockView(Base):
     stock_id: Mapped[int] = mapped_column(primary_key=True)
     symbol: Mapped[str] = mapped_column(String)
     last_update: Mapped[Date] = mapped_column(Date)
+    last_spot_date: Mapped[Date] = mapped_column(Date)
    
 
     def __repr__(self):

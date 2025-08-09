@@ -2,17 +2,14 @@
 import pytz.exceptions
 import requests.exceptions
 from pandas import DataFrame
-
 import curl_cffi
-from .sqlspeaker import update_shares, update_country, update_sector, update_currency, insert_stockspots, \
-    financial_insert_function, StockView, update_last_update, stock_list
+from .sqlspeaker import   financial_insert_function, StockView, stock_list
 
 import yfinance as yf
 from yfinance.exceptions import YFRateLimitError
 import time
-from datetime import timedelta,date
+
 from typing import Optional
-import datetime
 
 # get the quarterly balance_sheet of a stock
 def get_quarterly_balancesheet(share: yf.ticker.Ticker) -> Optional[DataFrame]:

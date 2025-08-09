@@ -1,7 +1,7 @@
 import os
 
-from sqlalchemy import select, create_engine
-from .db_orm import (Stock,
+from sqlalchemy import select, create_engine, and_
+from .db_orm import (
                         
                         QuarterlyBalanceSheet, QuarterlyIncomeStatement, QuarterlyCashFlow, StockView)
 
@@ -13,6 +13,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 from sqlalchemy.exc import DBAPIError
+
 
 
 
@@ -29,7 +30,7 @@ logger.addHandler(file_handler)
 # Example usage
 logger.info("This log will appear in output.log")
 logger.debug("Debugging information here.")
-psql = os.getenv('PSQL')
+psql =  os.getenv('PSQL')
 engine_dest = create_engine(psql)
 Session = sessionmaker(bind=engine_dest)
 
@@ -39,12 +40,24 @@ TABLE_MODLE_MAP = {
     "quarterly_cash_flow": QuarterlyCashFlow,
 }
 
-# connect to the database investments
+
 with Session() as session:
     try:
         seven_days_ago = date.today() - timedelta(days=7)
-        stock_list = session.query(StockView).filter(StockView.last_update >= seven_days_ago).all()
 
+        stock_list = (
+            session.query(StockView)
+            .filter(
+                and_(
+                    StockView.last_update >= seven_days_ago,
+                    StockView.last_spot_date >= seven_days_ago
+                )
+            )
+            .all()
+        )
+
+    except Exception as e:
+        print(f"Error: {e}")
 
     except DBAPIError as e:
         print(f"Error: {e}")
