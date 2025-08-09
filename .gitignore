@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environments (if you use one)
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# Test, coverage, and cache
+.pytest_cache/
+.cache/
+.tox/
+.nox/
+coverage.*
+*.cover
+*.log
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Jupyter Notebook checkpoints (if you add notebooks later)
+.ipynb_checkpoints/
+
+# Ignore AWS credentials or session files if present
+*.aws.session
+
+# Ignore YAML config files if you want to keep them private (optional)
+# *.yaml
