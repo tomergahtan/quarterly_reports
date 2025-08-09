@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: quarterly-reports-cronjob
 spec:
-  schedule: "0 3 * * *" # Quarterly on the 1st at 3 AM UTC
+  schedule: "0 3 * * 0" # Quarterly on the 1st at 3 AM UTC
   concurrencyPolicy: Replace
   jobTemplate:
     spec:
