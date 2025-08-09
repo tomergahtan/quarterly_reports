@@ -28,4 +28,4 @@ spec:
           volumes:
             - name: logs-volume
               hostPath:
-                path: /mnt/daily_routine_logs
+                path: /mnt/quaterly_reports_logs
